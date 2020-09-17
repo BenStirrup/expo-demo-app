@@ -6,6 +6,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 28
         targetSdkVersion = 28
+        playServicesVersion = "17.0.0"
     }
     repositories {
         google()
@@ -21,6 +22,12 @@ buildscript {
 
 allprojects {
     repositories {
+        Properties properties = new Properties()
+        File file = rootProject.file('local.properties')
+        if (file.exists()) {
+            properties.load(file.newDataInputStream())
+        }
+
         mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
@@ -29,6 +36,16 @@ allprojects {
         maven {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
+        }    
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = 'mapbox'
+                password = properties.getProperty("MAPBOX_TOKEN")
+            }
         }
 
         google()
