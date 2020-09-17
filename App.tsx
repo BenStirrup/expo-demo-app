@@ -3,6 +3,7 @@ import MapboxGL from "@react-native-mapbox-gl/maps";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import MapView from "react-native-maps";
 
 MapboxGL.setAccessToken(env.MAPBOX_TOKEN);
 MapboxGL.setTelemetryEnabled(false);
@@ -14,6 +15,10 @@ export default function App() {
       <View style={styles.mapContainer}>
         <Text>Mapbox</Text>
         <MapboxGL.MapView style={styles.map} />
+      </View>
+      <View style={styles.mapContainer}>
+        <Text>Google Maps</Text>
+        <MapView style={styles.map} />
       </View>
       <StatusBar style="auto" />
     </View>
