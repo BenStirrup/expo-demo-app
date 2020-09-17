@@ -1,12 +1,10 @@
 {
-  "name": "expo-demo-app-2",
-  "displayName": "expo-demo-app-2",
+  "name": "expo-demo-app",
+  "displayName": "expo-demo-app",
   "expo": {
-    "name": "expo-demo-app-2",
-    "slug": "expo-demo-app-2",
+    "name": "expo-demo-app",
+    "slug": "expo-demo-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   }
 }
