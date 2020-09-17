@@ -62,4 +62,8 @@ buck-out/
 .expo/*
 web-build/
 
+# Webpack bundle
+/dist
+
+# Env
 .env

@@ -1,12 +1,11 @@
-import env from "react-native-dotenv";
-import MapboxGL from "@react-native-mapbox-gl/maps";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MapView from "react-native-maps";
+import { StyleSheet, Platform, Text, View } from "react-native";
 
-MapboxGL.setAccessToken(env.MAPBOX_TOKEN);
-MapboxGL.setTelemetryEnabled(false);
+import MapboxMap from "./features/Map/MapboxMap";
+import GoogleMap from "./features/Map/GoogleMap";
+
+require("dotenv").config();
 
 export default function App() {
   return (
@@ -14,11 +13,11 @@ export default function App() {
       <Text>Demo App</Text>
       <View style={styles.mapContainer}>
         <Text>Mapbox</Text>
-        <MapboxGL.MapView style={styles.map} />
+        <MapboxMap />
       </View>
       <View style={styles.mapContainer}>
         <Text>Google Maps</Text>
-        <MapView style={styles.map} />
+        <GoogleMap />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -32,11 +31,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  map: {
-    flex: 1,
-  },
   mapContainer: {
-    height: 300,
-    width: 300,
+    ...Platform.select({
+      web: {
+        height: 450,
+        width: 450,
+      },
+      default: {
+        height: 300,
+        width: 300,
+      },
+    }),
   },
 });
