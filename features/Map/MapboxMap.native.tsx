@@ -1,8 +1,8 @@
 import MapboxGLNative from "@react-native-mapbox-gl/maps";
 import React from "react";
-import env from "react-native-dotenv";
+import Config from "react-native-config";
 
-MapboxGLNative.setAccessToken(env.MAPBOX_TOKEN);
+MapboxGLNative.setAccessToken(Config.MAPBOX_TOKEN);
 MapboxGLNative.setTelemetryEnabled(false);
 
 export default function MapboxMapNative() {

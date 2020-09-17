@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const TOKEN = process.env.MAPBOX_TOKEN || "";
-
 export default function MapboxMapWeb() {
   const [viewport, setViewport] = useState({
     width: 400,
@@ -15,7 +13,7 @@ export default function MapboxMapWeb() {
 
   return (
     <ReactMapGL
-      mapboxApiAccessToken={TOKEN}
+      mapboxApiAccessToken={process.env.MAPBOX_TOKEN || ""}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     />

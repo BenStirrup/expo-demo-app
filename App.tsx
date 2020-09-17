@@ -5,8 +5,6 @@ import { StyleSheet, Platform, Text, View } from "react-native";
 import MapboxMap from "./features/Map/MapboxMap";
 import GoogleMap from "./features/Map/GoogleMap";
 
-require("dotenv").config();
-
 export default function App() {
   return (
     <View style={styles.root}>
